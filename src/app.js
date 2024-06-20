@@ -5,7 +5,9 @@ const eventsRouter = require('./domain/events');
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb+srv://admin:admin@cluster0.wkjhpyu.mongodb.net/');
+const mongoDbUser = process.env.MONGO_DB_USER;
+const mongoDbPassword = process.env.MONGO_DB_PASSWORD;
+mongoose.connect(`mongodb+srv://${mongoDbUser}:${mongoDbPassword}@cluster0.wkjhpyu.mongodb.net/`);
 
 app.use((req, res, next) => {
     const envApiKey = process.env.API_KEY;
